@@ -28,17 +28,22 @@ public class Program {
 			System.out.println("Reservation: " + reservation);
 			
 			System.out.println();
-			System.out.println("Enter dadta to update the reservation");
+			System.out.println("Enter data to update the reservation");
 			System.out.print("Check-in date (dd/MM/yyyy): ");
 			checkIn = sdf.parse(scan.next());
 			System.out.print("Check-out date (dd/MM/yyyy): ");
 			checkOut = sdf.parse(scan.next());
 			
-			reservation.updateDates(checkIn, checkOut);
-			System.out.println("Reservation: " + reservation);
+			String error = reservation.updateDates(checkIn, checkOut);
+			
+			if (error != null) {
+				System.out.println("Error in reservation: " + error);
+			}
+			else {
+				System.out.println("Reservation: " + reservation);
+			}
 		}
 		
 		scan.close();
 	}
-
 }
